@@ -1,0 +1,34 @@
+---
+- hosts: all
+
+  vars:
+    homebrew_taps:
+      - homebrew/core
+      - homebrew/cask-versions
+      - jonanh/unity3d
+
+    homebrew_installed_packages:
+      - autoconf
+      - bash-completion
+      - git
+      - gitlab-runner
+  
+    homebrew_cask_apps:
+      - docker
+      - java8
+      - android-sdk
+      - android-ndk
+      - unity3d-2018.2
+      - xamarin
+      - xamarin-android
+      - dotnet-sdk
+      - mono-mdk
+
+  roles:
+    - role: geerlingguy.homebrew
+      tags: ['homebrew']
+  
+  tasks:
+    - shell: /usr/bin/uptime
+      register: result
+
